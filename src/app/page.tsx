@@ -1,6 +1,6 @@
 /** @format */
+"use client";
 
-// pages/index.tsx
 import React from "react";
 import Board from "@/components/board";
 import { useMorabsStore } from "@/store/morabs-store";

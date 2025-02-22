@@ -1,6 +1,7 @@
 /** @format */
 
-// components/Hole.tsx
+"use client";
+
 import { useMorabsStore } from "@/store/morabs-store";
 import React from "react";
 
