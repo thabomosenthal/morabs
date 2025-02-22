@@ -4,6 +4,7 @@
 
 import React from "react";
 import { useMorabsStore } from "@/store/morabs-store";
+import { cn } from "@/utils/classes-merge";
 interface HoleProps {
 	index: number;
 	stones: number;
@@ -29,17 +30,27 @@ const Hole: React.FC<HoleProps> = ({
 	};
 
 	return (
-		<div
+		<button
 			style={{
-				cursor: isDisabled || isCrawlHole ? "not-allowed" : "pointer", // Disable cursor
 				opacity: isDisabled || isCrawlHole ? 0.5 : 1, // Visually indicate disabled state
-				backgroundColor: isCrawlHole ? "lightgreen" : "white", // Highlight crawl-hole
 			}}
-			className="size-12 border border-zinc-500 text-zinc-900 font-bold rounded-full flex justify-center items-center m-1.5"
+			className={cn(
+				"border-2 border-zinc-600",
+				"hover:-translate-y-1 disabled:translate-none",
+				"flex justify-center items-center",
+				"size-12   font-bold rounded-full  m-1.5",
+				"focus-visible:right-1 focus-visible:ring-amber-800",
+				"cursor-pointer disabled:cursor-not-allowed",
+				"disabled:opacity-50",
+				isCrawlHole
+					? "bg-green-700 border-green-900 text-green-200 hover:translate-none cursor-not-allowed"
+					: "bg-zinc-200 text-zinc-900"
+			)}
+			disabled={isDisabled}
 			onClick={isDisabled || isCrawlHole ? undefined : handleClick} // Use handleClick
 		>
 			{stones}
-		</div>
+		</button>
 	);
 };
 

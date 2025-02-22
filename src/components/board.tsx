@@ -5,6 +5,7 @@
 import React from "react";
 import { useMorabsStore } from "@/store/morabs-store";
 import Hole from "./hole";
+import { cn } from "@/utils/classes-merge";
 
 interface BoardProps {
 	player: 1 | 2;
@@ -22,7 +23,9 @@ const Board: React.FC<BoardProps> = ({ player }) => {
 
 	return (
 		<div>
-			<h3>Player {player}'s Board</h3>
+			<h3 className={cn(isDisabled && "opacity-20")}>
+				Player {player}'s Board
+			</h3>
 			<div style={{ display: "flex" }}>
 				{board.map((stones, index) => (
 					<Hole
