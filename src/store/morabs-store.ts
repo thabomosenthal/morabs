@@ -5,12 +5,13 @@ import { create } from "zustand";
 
 // Define the game state type
 interface MorabsState {
-	board: number[];
+	player1Board: number[];
+	player2Board: number[];
 	currentPlayer: 1 | 2;
 	winner: 1 | 2 | null;
 	startGame: () => void;
 	makeMove: (holeIndex: number) => void;
-	isGameOver: (boardToCheck: number[]) => boolean;
+	isGameOver: () => boolean; // No longer needs boardToCheck
 	switchPlayer: () => void;
 }
 
@@ -19,31 +20,55 @@ const initialPlayer: 1 | 2 = 1;
 
 // Create the Zustand store
 export const useMorabsStore = create<MorabsState>((set, get) => ({
-	board: initialBoard,
+	player1Board: initialBoard,
+	player2Board: [...initialBoard], // Create a separate copy
 	currentPlayer: initialPlayer,
 	winner: null,
 
 	startGame: () => {
-		set({ board: initialBoard, currentPlayer: initialPlayer, winner: null });
+		set({
+			player1Board: initialBoard,
+			player2Board: [...initialBoard],
+			currentPlayer: initialPlayer,
+			winner: null,
+		});
 	},
 
 	makeMove: (holeIndex: number) => {
 		if (get().winner) return; // Game over
 
-		const newBoard = [...get().board];
-		let stones = newBoard[holeIndex];
-		newBoard[holeIndex] = 0; // Pick up stones
+		// Prevent picking from the crawl-hole
+		if (holeIndex === 9) {
+			return; // Do nothing if the crawl-hole is selected
+		}
+
+		const currentPlayer = get().currentPlayer;
+		const currentBoard =
+			currentPlayer === 1 ? [...get().player1Board] : [...get().player2Board];
+
+		// Prevent picking from an empty hole
+		if (currentBoard[holeIndex] === 0) {
+			return; // Do nothing if the selected hole is empty
+		}
+
+		let stones = currentBoard[holeIndex];
+		currentBoard[holeIndex] = 0; // Pick up stones
 
 		let currentIndex = holeIndex;
 		while (stones > 0) {
-			currentIndex = (currentIndex + 1) % newBoard.length; // Circular
-			newBoard[currentIndex]++;
+			currentIndex = (currentIndex + 1) % currentBoard.length; // Circular
+			currentBoard[currentIndex]++;
 			stones--;
 		}
 
-		set({ board: newBoard });
+		// Update the board based on the current player
+		if (currentPlayer === 1) {
+			set({ player1Board: currentBoard });
+		} else {
+			set({ player2Board: currentBoard });
+		}
 
-		if (newBoard[currentIndex] === 1 && currentIndex !== 9) {
+		if (currentBoard[currentIndex] === 1 && currentIndex !== 9) {
 			// Empty hole (not crawl-hole)
 			get().switchPlayer();
 		} else if (currentIndex === 9) {
@@ -54,17 +79,41 @@ export const useMorabsStore = create<MorabsState>((set, get) => ({
 			get().makeMove(currentIndex); // Recursive call
 		}
 
-		if (get().isGameOver(newBoard)) {
-			set({ winner: get().currentPlayer });
+		// Check for win condition after each move
+		if (get().isGameOver()) {
+			// The winner is the current player
+			set({ winner: currentPlayer });
 		}
 	},
 
-	isGameOver: (boardToCheck: number[]) => {
-		let sum = 0;
-		for (let i = 0; i < boardToCheck.length - 1; i++) {
-			sum += boardToCheck[i];
+	isGameOver: () => {
+		const player1Board = get().player1Board;
+		const player2Board = get().player2Board;
+
+		const player1Sum = player1Board.reduce((sum, stones, index) => {
+			if (index !== 9) {
+				return sum + stones;
+			}
+			return sum;
+		}, 0);
+
+		const player2Sum = player2Board.reduce((sum, stones, index) => {
+			if (index !== 9) {
+				return sum + stones;
+			}
+			return sum;
+		}, 0);
+
+		// Check if either player has all stones in their crawl-hole
+		if (player1Sum === 0 && player1Board[9] > 0) {
+			return true; // Player 1 wins
 		}
-		return sum === 0;
+
+		if (player2Sum === 0 && player2Board[9] > 0) {
+			return true; // Player 2 wins
+		}
+
+		return false; // No winner yet
 	},
 
 	switchPlayer: () => {

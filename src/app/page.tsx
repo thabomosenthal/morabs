@@ -13,10 +13,10 @@ const Home = () => {
 	return (
 		<div>
 			<h1>Morabs Game</h1>
-			<p>
-				Current Player: {winner ? `Winner is Player ${winner}!` : currentPlayer}
-			</p>
-			<Board />
+			<p>Current Player: {currentPlayer}</p>
+			{winner && <p>Winner: Player {winner}!</p>}
+			<Board player={1} />
+			<Board player={2} />
 			<button onClick={startGame}>Start New Game</button>
 		</div>
 	);
