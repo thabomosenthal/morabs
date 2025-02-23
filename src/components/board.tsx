@@ -33,7 +33,7 @@ const Board: React.FC<BoardProps> = ({ player }) => {
 						index={index}
 						stones={stones}
 						isDisabled={isDisabled}
-						isCrawlHole={index === 9} // Pass isCrawlHole prop
+						isCrawlHole={index === board.length - 1} // Pass isCrawlHole prop
 					/>
 				))}
 			</div>

@@ -15,8 +15,10 @@ interface MorabsState {
 	switchPlayer: () => void;
 }
 
-const initialBoard = [4, 4, 4, 4, 4, 4, 4, 4, 4, 0]; // 9 holes with 4 stones, 1 crawl-hole
+const initialBoard = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0]; // 11 holes with 5 stones, 1 crawl-hole
 const initialPlayer: 1 | 2 = 1;
+
+const crawlHoleIndex = initialBoard.length - 1;
 
 // Create the Zustand store
 export const useMorabsStore = create<MorabsState>((set, get) => ({
@@ -38,7 +40,7 @@ export const useMorabsStore = create<MorabsState>((set, get) => ({
 		if (get().winner) return; // Game over
 
 		// Prevent picking from the crawl-hole
-		if (holeIndex === 9) {
+		if (holeIndex === crawlHoleIndex) {
 			return; // Do nothing if the crawl-hole is selected
 		}
 
@@ -68,10 +70,10 @@ export const useMorabsStore = create<MorabsState>((set, get) => ({
 			set({ player2Board: currentBoard });
 		}
 
-		if (currentBoard[currentIndex] === 1 && currentIndex !== 9) {
+		if (currentBoard[currentIndex] === 1 && currentIndex !== crawlHoleIndex) {
 			// Empty hole (not crawl-hole)
 			get().switchPlayer();
-		} else if (currentIndex === 9) {
+		} else if (currentIndex === crawlHoleIndex) {
 			// Ended on crawl-hole
 			get().switchPlayer();
 		} else {
@@ -91,25 +93,25 @@ export const useMorabsStore = create<MorabsState>((set, get) => ({
 		const player2Board = get().player2Board;
 
 		const player1Sum = player1Board.reduce((sum, stones, index) => {
-			if (index !== 9) {
+			if (index !== crawlHoleIndex) {
 				return sum + stones;
 			}
 			return sum;
 		}, 0);
 
 		const player2Sum = player2Board.reduce((sum, stones, index) => {
-			if (index !== 9) {
+			if (index !== crawlHoleIndex) {
 				return sum + stones;
 			}
 			return sum;
 		}, 0);
 
 		// Check if either player has all stones in their crawl-hole
-		if (player1Sum === 0 && player1Board[9] > 0) {
+		if (player1Sum === 0 && player1Board[crawlHoleIndex!] > 0) {
 			return true; // Player 1 wins
 		}
 
-		if (player2Sum === 0 && player2Board[9] > 0) {
+		if (player2Sum === 0 && player2Board[crawlHoleIndex!] > 0) {
 			return true; // Player 2 wins
 		}
 
