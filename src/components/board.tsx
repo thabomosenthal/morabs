@@ -24,7 +24,7 @@ const Board: React.FC<BoardProps> = ({ player }) => {
 	return (
 		<div>
 			<h3 className={cn(isDisabled && "opacity-20")}>
-				Player {player}'s Board
+				Player {player}&apos;s Board
 			</h3>
 			<div style={{ display: "flex" }}>
 				{board.map((stones, index) => (
