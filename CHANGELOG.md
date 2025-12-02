@@ -1,6 +1,12 @@
 <!-- markdownlint-disable MD024 -->
 # Changelog
 
+## [0.1.5-0](https://github.com/thabomosenthal/morabs/compare/v0.1.4...v0.1.5-0) (2025-12-02)
+
+### Bug Fixes
+
+* **release:** finalize changelog automation cleanup ([89afaf3](https://github.com/thabomosenthal/morabs/commit/89afaf35df0fa72d2b482dc9cc2186efd39a7e10))
+
 ## [0.1.4](https://github.com/thabomosenthal/morabs/compare/v0.1.3...v0.1.4) (2025-12-02)
 
 ### Bug Fixes
