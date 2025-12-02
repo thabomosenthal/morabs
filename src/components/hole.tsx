@@ -4,7 +4,10 @@
 
 import React from "react";
 import { useMorabsStore } from "@/store/morabs-store";
-import { cn } from "@/utils/classes-merge";
+import { cn } from "@/utils";
+
+//
+
 interface HoleProps {
 	index: number;
 	stones: number;
