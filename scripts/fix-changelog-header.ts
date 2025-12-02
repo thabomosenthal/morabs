@@ -4,7 +4,7 @@ import * as process from "process";
 
 const changelogPath = path.resolve(process.cwd(), "CHANGELOG.md");
 
-const ignoreRule = "";
+const ignoreRule = "<!-- markdownlint-disable MD024 -->";
 const requiredHeader = "# Changelog";
 
 const fullHeaderBlock = `${ignoreRule}\n${requiredHeader}\n\n`;
