@@ -9,7 +9,7 @@
 		"start": "next start",
 		"lint": "next lint",
 		"preversion": "tsx scripts/release-manager.ts",
-		"version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
+		"version": "conventional-changelog -p angular -i CHANGELOG.md -s && tsx scripts/fix-changelog-header.ts && git add CHANGELOG.md",
 		"postversion": "git push && git push --tags"
 	},
 	"dependencies": {
