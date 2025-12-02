@@ -8,7 +8,6 @@
 * **build:** ensure CHANGELOG.md passes MD041 rule ([0214c61](https://github.com/thabomosenthal/morabs/commit/0214c61d6d90fa3f364b25741f46fee88078ee6f))
 
 
-
 ## [0.1.2](https://github.com/thabomosenthal/morabs/compare/v0.1.1...v0.1.2) (2025-12-02)
 
 
@@ -18,7 +17,6 @@
 
 
 
-# Changelog
 
 ## 0.1.1 (2025-12-02)
 
