@@ -339,23 +339,19 @@ const WinnerBanner = () => {
 	);
 };
 
-const Boards = () => {
-	// const {} = useGame();
-
-	return (
-		<div className="flex flex-col lg:flex-row gap-8 items-center justify-center w-full">
-			<Board player={1} />
-			<div className="hidden lg:flex flex-col items-center gap-2 text-slate-600">
-				<div className="h-12 w-px bg-slate-800" />
-				<span className="text-xs font-bold uppercase tracking-widest rotate-90 whitespace-nowrap">
-					VS
-				</span>
-				<div className="h-12 w-px bg-slate-800" />
-			</div>
-			<Board player={2} />
+const Boards = () => (
+	<div className="flex flex-col lg:flex-row gap-8 items-center justify-center w-full">
+		<Board player={1} />
+		<div className="hidden lg:flex flex-col items-center gap-2 text-slate-600">
+			<div className="h-12 w-px bg-slate-800" />
+			<span className="text-xs font-bold uppercase tracking-widest rotate-90 whitespace-nowrap">
+				VS
+			</span>
+			<div className="h-12 w-px bg-slate-800" />
 		</div>
-	);
-};
+		<Board player={2} />
+	</div>
+);
 
 const Controls = () => {
 	const {

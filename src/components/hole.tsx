@@ -11,7 +11,7 @@ interface HoleProps {
 	stones: number;
 	isDisabled?: boolean;
 	isCrawlHole?: boolean; // New prop to indicate crawl-hole
-	onClick: (holeIndex:number) => void;
+	onClick: (holeIndex: number) => void;
 }
 
 const Hole: React.FC<HoleProps> = ({
@@ -66,7 +66,11 @@ const Hole: React.FC<HoleProps> = ({
 					{stoneVisuals.map((_, i) => (
 						<div
 							key={i}
-							className={`rounded-full shadow-sm transition-all duration-500 ${isCrawlHole ? `w-3 h-3 ${theme.crawlHole}` : `w-2.5 h-2.5 ${theme.stoneColor}`}`}
+							className={`rounded-full shadow-sm transition-all duration-500 ${
+								isCrawlHole
+									? `w-3 h-3 ${theme.crawlHole}`
+									: `w-2.5 h-2.5 ${theme.stoneColor}`
+							}`}
 						/>
 					))}
 					{stones > 15 && (
@@ -76,7 +80,9 @@ const Hole: React.FC<HoleProps> = ({
 					)}
 				</div>
 				<div
-					className={`absolute -top-2 -right-2 bg-slate-900 text-slate-200 text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full border border-slate-700 shadow-md transition-transform duration-300 ${animClass ? "scale-125" : ""}`}
+					className={`absolute -top-2 -right-2 bg-slate-900 text-slate-200 text-xs font-bold w-6 h-6 flex items-center justify-center rounded-full border border-slate-700 shadow-md transition-transform duration-300 ${
+						animClass ? "scale-125" : ""
+					}`}
 				>
 					{stones}
 				</div>

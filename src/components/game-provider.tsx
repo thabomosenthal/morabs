@@ -10,7 +10,7 @@ import {
 	TOTAL_STONES,
 } from "@/lib/contants";
 import { sleep } from "@/utils";
-// import { GameContext } from "@/hooks/use-game";
+
 import { GameAction, GameState, GameTheme } from "@/lib/types";
 
 const checkGameOver = (p1Board: number[], p2Board: number[]) => {
