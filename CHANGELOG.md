@@ -1,6 +1,12 @@
 <!-- markdownlint-disable MD024 -->
 # Changelog
 
+## [0.2.2](https://github.com/thabomosenthal/morabs/compare/v0.2.1...v0.2.2) (2025-12-04)
+
+### Bug Fixes
+
+* **deps:** upgrade next.js and react.js to resolve CVE-2025-55182 ([38843a7](https://github.com/thabomosenthal/morabs/commit/38843a7f6df9a18686f0b3af262bec38992e1a37))
+
 ## [0.2.1](https://github.com/thabomosenthal/morabs/compare/v0.2.0...v0.2.1) (2025-12-04)
 
 ### Bug Fixes
