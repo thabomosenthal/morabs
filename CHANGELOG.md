@@ -1,6 +1,13 @@
 <!-- markdownlint-disable MD024 -->
 # Changelog
 
+# [0.2.0](https://github.com/thabomosenthal/morabs/compare/v0.1.6-0...v0.2.0) (2025-12-04)
+
+### Features
+
+* add lucide icon library ([8171c7f](https://github.com/thabomosenthal/morabs/commit/8171c7f6ebcf2bd9b0ad4d0e7dce5c6aef124467))
+* Major overhaul - AI, Animations, Sound & Analytics (v2.0) ([adb13cf](https://github.com/thabomosenthal/morabs/commit/adb13cfcfa900aa9a7fffd788a146475a48acfcf))
+
 ## [0.1.6-0](https://github.com/thabomosenthal/morabs/compare/v0.1.5-0...v0.1.6-0) (2025-12-02)
 
 ## [0.1.5-0](https://github.com/thabomosenthal/morabs/compare/v0.1.4...v0.1.5-0) (2025-12-02)
