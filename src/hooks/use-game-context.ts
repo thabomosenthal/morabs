@@ -1,3 +1,5 @@
+/** @/hooks/use-game-context.ts */
+
 import { GameContext } from "@/components/game-provider";
 import React from "react";
 

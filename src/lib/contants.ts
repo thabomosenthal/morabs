@@ -1,3 +1,5 @@
+/** @/lib/contants.ts */
+
 // --- Assets & Constants ---
 
 const INITIAL_BOARD = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0]; // 10 holes + 1 crawl-hole

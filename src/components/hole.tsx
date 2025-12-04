@@ -1,4 +1,5 @@
 "use client";
+/** @/components/hole.tsx */
 
 import React from "react";
 

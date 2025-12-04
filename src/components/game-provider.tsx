@@ -1,4 +1,5 @@
 "use client";
+/** @/components/game-provider.tsx */
 
 import React from "react";
 

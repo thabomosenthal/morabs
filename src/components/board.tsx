@@ -1,4 +1,5 @@
 "use client";
+/** @/components/board.tsx */
 
 import { useGameContext } from "@/hooks/use-game-context";
 import { CRAWL_HOLE_INDEX, THEMES } from "@/lib/contants";

@@ -1,4 +1,5 @@
 "use client";
+/** @/components/morabs-game.tsx */
 
 import { useGameContext } from "@/hooks/use-game-context";
 import { THEMES } from "@/lib/contants";

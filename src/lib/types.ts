@@ -1,3 +1,5 @@
+/** @/lib/types.ts */
+
 export type GameAction =
 	| {
 			type: "SET_BEST_RECORD";

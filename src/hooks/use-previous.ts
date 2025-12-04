@@ -1,3 +1,5 @@
+/** @/hooks/use-prevous.ts */
+
 import React from "react";
 
 export const usePrevious = (value: number) => {

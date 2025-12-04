@@ -1,4 +1,4 @@
-// @/utils/index.ts
+/**  @/utils/index.ts  */
 
 /** classNames */
 import { clsx, type ClassValue } from "clsx";

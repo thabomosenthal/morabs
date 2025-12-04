@@ -1,3 +1,5 @@
+/** @/app/page.tsx */
+
 import MorabsGame from "@/components/morabs-game";
 
 const Home = () => {
