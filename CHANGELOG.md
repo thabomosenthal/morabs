@@ -1,6 +1,12 @@
 <!-- markdownlint-disable MD024 -->
 # Changelog
 
+## [0.2.1](https://github.com/thabomosenthal/morabs/compare/v0.2.0...v0.2.1) (2025-12-04)
+
+### Bug Fixes
+
+* add 'use client' directive to address nextjs prerendering error ([44fb9f0](https://github.com/thabomosenthal/morabs/commit/44fb9f05de6d84ebac8c90e3903e3578c34b3f1b))
+
 # [0.2.0](https://github.com/thabomosenthal/morabs/compare/v0.1.6-0...v0.2.0) (2025-12-04)
 
 ### Features
