@@ -1,6 +1,16 @@
 <!-- markdownlint-disable MD024 -->
 # Changelog
 
+## [0.2.3](https://github.com/thabomosenthal/morabs/compare/v0.2.2...v0.2.3) (2025-12-04)
+
+### Bug Fixes
+
+* rename release-confirm to release-checkpoint for clarity ([d1b3021](https://github.com/thabomosenthal/morabs/commit/d1b3021243da9ad78d964f7126f624cafe26ee57))
+
+### Features
+
+* **analytics:** add Vercel Web Analytics ([fb38d84](https://github.com/thabomosenthal/morabs/commit/fb38d844ffb5789ab8b2707dda541af51f69c5ef))
+
 ## [0.2.2](https://github.com/thabomosenthal/morabs/compare/v0.2.1...v0.2.2) (2025-12-04)
 
 ### Bug Fixes
