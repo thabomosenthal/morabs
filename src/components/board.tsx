@@ -1,4 +1,4 @@
-import { useGame } from "@/hooks/use-game";
+import { useGameContext } from "@/hooks/use-game-context";
 import { CRAWL_HOLE_INDEX, THEMES } from "@/lib/contants";
 import Hole from "./hole";
 import { LucideBot, LucideUser } from "lucide-react";
@@ -29,7 +29,7 @@ const Board: React.FC<BoardProps> = ({ player }) => {
 		isProcessing,
 		currentTheme,
 		isVsCPU,
-	} = useGame();
+	} = useGameContext();
 	const theme = THEMES[currentTheme];
 
 	const board = player === 1 ? player1Board : player2Board;

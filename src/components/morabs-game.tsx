@@ -1,4 +1,4 @@
-import { useGame } from "@/hooks/use-game";
+import { useGameContext } from "@/hooks/use-game-context";
 import { THEMES } from "@/lib/contants";
 import Board from "./board";
 import {
@@ -40,7 +40,7 @@ const MorabsGame = () => {
 		toggleCPULevel,
 		currentTheme,
 		cycleTheme,
-	} = useGame();
+	} = useGameContext();
 	const theme = THEMES[currentTheme];
 
 	const showLiveStats = isProcessing;
@@ -300,7 +300,7 @@ const WinnerBanner = () => {
 		bestRecord,
 		p1MaxLaps,
 		p2MaxLaps,
-	} = useGame();
+	} = useGameContext();
 	const theme = THEMES[currentTheme];
 
 	return (
@@ -371,7 +371,7 @@ const Controls = () => {
 		startGame,
 		toggleCPU,
 		toggleCPULevel,
-	} = useGame();
+	} = useGameContext();
 	const theme = THEMES[currentTheme];
 
 	const showLiveStats = isProcessing;

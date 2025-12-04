@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { useGame } from "@/hooks/use-game";
+import { useGameContext } from "@/hooks/use-game-context";
 import { THEMES } from "@/lib/contants";
 import { usePrevious } from "@/hooks/use-previous";
 
@@ -21,7 +21,7 @@ const Hole: React.FC<HoleProps> = ({
 	isCrawlHole,
 	onClick,
 }) => {
-	const { useAnimations, currentTheme } = useGame();
+	const { useAnimations, currentTheme } = useGameContext();
 	const theme = THEMES[currentTheme];
 
 	const prevStones = usePrevious(stones);
