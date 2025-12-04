@@ -8,7 +8,7 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"preversion": "tsx scripts/release-manager.ts",
+		"preversion": "tsx scripts/release-checkpoint.ts",
 		"version": "conventional-changelog -p angular -i CHANGELOG.md -s && tsx scripts/fix-changelog-header.ts && git add CHANGELOG.md",
 		"postversion": "git push && git push --tags"
 	},
