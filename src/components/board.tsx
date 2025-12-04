@@ -1,3 +1,5 @@
+"use client";
+
 import { useGameContext } from "@/hooks/use-game-context";
 import { CRAWL_HOLE_INDEX, THEMES } from "@/lib/contants";
 import Hole from "./hole";

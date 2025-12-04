@@ -1,3 +1,5 @@
+"use client";
+
 import { useGameContext } from "@/hooks/use-game-context";
 import { THEMES } from "@/lib/contants";
 import Board from "./board";
