@@ -1,8 +1,9 @@
 /** @/lib/contants.ts */
 
+import { INITIAL_BOARD } from "@/game-engine/rules";
+
 // --- Assets & Constants ---
 
-const INITIAL_BOARD = [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0]; // 10 holes + 1 crawl-hole
 const CRAWL_HOLE_INDEX = INITIAL_BOARD.length - 1;
 const STORAGE_KEY = "MORABS_BEST_RECORD_V2";
 const TOTAL_STONES = 50;
