@@ -1,6 +1,16 @@
 <!-- markdownlint-disable MD024 -->
 # Changelog
 
+## [0.2.4](https://github.com/thabomosenthal/morabs/compare/v0.2.3...v0.2.4) (2025-12-17)
+
+### Bug Fixes
+
+* **security:** patch upstream React vulnerabilities ([4a3b2ec](https://github.com/thabomosenthal/morabs/commit/4a3b2ecc8447d61b63a1c22a473e6f04986801fc))
+
+### Features
+
+* bump up dependencies ([72d4aef](https://github.com/thabomosenthal/morabs/commit/72d4aefb75c15af73582c7d086fd9eef90d8ddec))
+
 ## [0.2.3](https://github.com/thabomosenthal/morabs/compare/v0.2.2...v0.2.3) (2025-12-04)
 
 ### Bug Fixes
