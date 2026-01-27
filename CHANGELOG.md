@@ -1,6 +1,12 @@
 <!-- markdownlint-disable MD024 -->
 # Changelog
 
+# [0.3.0](https://github.com/thabomosenthal/morabs/compare/v0.2.4...v0.3.0) (2026-01-27)
+
+### Features
+
+* **ci:** add CI workflow for testing and linting ([d38669e](https://github.com/thabomosenthal/morabs/commit/d38669e29c61750068911741e272a32fbecb5e3f))
+
 ## [0.2.4](https://github.com/thabomosenthal/morabs/compare/v0.2.3...v0.2.4) (2025-12-17)
 
 ### Bug Fixes
