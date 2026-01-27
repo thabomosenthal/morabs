@@ -3,7 +3,6 @@
 	"version": "0.3.0",
 	"private": true,
 	"scripts": {
-		"turbo": "next dev --turbopack",
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
