@@ -1,6 +1,13 @@
 <!-- markdownlint-disable MD024 -->
 # Changelog
 
+## [0.3.1](https://github.com/thabomosenthal/morabs/compare/v0.3.0...v0.3.1) (2026-01-27)
+
+### Bug Fixes
+
+* **ci:** simplify lint and test commands in CI workflow ([9e467c4](https://github.com/thabomosenthal/morabs/commit/9e467c4ecd81a52c05b722ac9449092cae89a967))
+* remove unused turbo script from package.json ([55a26e2](https://github.com/thabomosenthal/morabs/commit/55a26e235e5c4d9eb20fe20b50d04e61c6185c7c))
+
 # [0.3.0](https://github.com/thabomosenthal/morabs/compare/v0.2.4...v0.3.0) (2026-01-27)
 
 ### Features
