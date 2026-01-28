@@ -1,6 +1,8 @@
 <!-- markdownlint-disable MD024 -->
 # Changelog
 
+# [0.4.0](https://github.com/thabomosenthal/morabs/compare/v0.3.1...v0.4.0) (2026-01-28)
+
 ## [0.3.1](https://github.com/thabomosenthal/morabs/compare/v0.3.0...v0.3.1) (2026-01-27)
 
 ### Bug Fixes
