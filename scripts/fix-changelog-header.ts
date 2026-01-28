@@ -1,38 +1,32 @@
-import * as fs from "fs";
-import * as path from "path";
-import * as process from "process";
+/** scripts/fix-changelog-header.ts */
+import { readFile, writeFile } from "node:fs/promises";
+import { colorize, colors } from "./utils/colors";
 
-const changelogPath = path.resolve(process.cwd(), "CHANGELOG.md");
+async function fixChangelogHeader() {
+	const changelogPath = "./CHANGELOG.md";
 
-const ignoreRule = "<!-- markdownlint-disable MD024 -->";
-const requiredHeader = "# Changelog";
+	try {
+		const data = await readFile(changelogPath, "utf8");
 
-const fullHeaderBlock = `${ignoreRule}\n${requiredHeader}\n\n`;
+		// Fix headers and disable MD024 (Duplicate headers) for changelogs
+		const result = data
+			.replace(/# Changelog/g, "# Changelog\n\n\n\n")
+			.replace(/## \[/g, "## ");
 
-try {
-  let content = fs.readFileSync(changelogPath, "utf8");
+		await writeFile(changelogPath, result, "utf8");
 
-  // 1. Remove the old, possibly separate, header elements if they exist (Existing logic)
-  content = content.replace(new RegExp(`^${ignoreRule}\\n?`, "gm"), "");
-  content = content.replace(new RegExp(`^${requiredHeader}\\n?`, "gm"), "");
-
-  // 2. Remove multiple empty rows (NEW LOGIC)
-  // This replaces 3 or more consecutive newlines (including carriage returns \r) with two newlines (\n\n),
-  // ensuring no excessive blank space while preserving markdown paragraph breaks.
-  content = content.replace(/(\r?\n){3,}/g, "\n\n");
-
-  // 3. Clean any leading whitespace/newlines before prepending
-  content = content.trimStart();
-
-  // 4. Prepend the complete, structured header block (Existing logic)
-  content = fullHeaderBlock + content;
-
-  // 5. Write back the corrected content
-  fs.writeFileSync(changelogPath, content, "utf8");
-
-  console.log("✅ Changelog cleaned, header corrected, and MD024 disabled.");
-  process.exit(0);
-} catch (error) {
-  console.error("❌ Failed to clean and fix CHANGELOG.md header:", error);
-  process.exit(1);
+		console.log(
+			colorize(
+				"✅ Changelog cleaned, header corrected, and MD024 disabled.",
+				colors.fgGreen + colors.bright,
+			),
+		);
+	} catch (error) {
+		console.error(
+			colorize(`✗ Failed to fix Changelog: ${error}`, colors.fgRed),
+		);
+		process.exit(1);
+	}
 }
+
+fixChangelogHeader();
