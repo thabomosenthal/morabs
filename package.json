@@ -9,7 +9,7 @@
 		"lint": "biome check --write .",
 		"lint:next": "eslint .",
 		"check": "pnpm lint && pnpm lint:next",
-		"preversion": "tsx scripts/release-checkpoint.ts",
+		"preversion": "pnpm tsx scripts/release-checkpoint.ts",
 		"version": "conventional-changelog -p angular -i CHANGELOG.md -s && tsx scripts/fix-changelog-header.ts && git add CHANGELOG.md",
 		"postversion": "git push && git push --tags"
 	},
