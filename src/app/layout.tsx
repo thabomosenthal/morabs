@@ -1,40 +1,40 @@
 /** @/app/layout.tsx */
 
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import GameProvider from "@/components/game-provider";
 
 const geistSans = Geist({
-	variable: "--font-geist-sans",
-	subsets: ["latin"],
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
-	variable: "--font-geist-mono",
-	subsets: ["latin"],
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-	title: "A Morabaraba Game - The one that I know",
-	description:
-		"A Morabaraba game that I know. Not this other one that actually I know as 'Mmela'.",
+  title: "A Morabaraba Game - The one that I know",
+  description:
+    "A Morabaraba game that I know. Not this other one that actually I know as 'Mmela'.",
 };
 
 export default function RootLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-	return (
-		<html lang="en">
-			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-			>
-				<GameProvider>{children}</GameProvider>
-				<Analytics />
-			</body>
-		</html>
-	);
+  return (
+    <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <GameProvider>{children}</GameProvider>
+        <Analytics />
+      </body>
+    </html>
+  );
 }

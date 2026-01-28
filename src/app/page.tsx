@@ -3,7 +3,7 @@
 import MorabsGame from "@/components/morabs-game";
 
 const Home = () => {
-	return <MorabsGame />;
+  return <MorabsGame />;
 };
 
 export default Home;
