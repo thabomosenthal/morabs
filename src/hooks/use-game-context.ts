@@ -1,16 +1,16 @@
 /** @/hooks/use-game-context.ts */
 
-import { GameContext } from "@/components/game-provider";
 import React from "react";
+import { GameContext } from "@/components/game-provider";
 
 export const useGameContext = () => {
-	const context = React.use(GameContext);
+  const context = React.use(GameContext);
 
-	if (!context) {
-		throw new Error(
-			"useGameContext must be used within a GameContext Provider"
-		);
-	}
+  if (!context) {
+    throw new Error(
+      "useGameContext must be used within a GameContext Provider",
+    );
+  }
 
-	return context;
+  return context;
 };
