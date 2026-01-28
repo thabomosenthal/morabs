@@ -1,59 +1,58 @@
 /** scripts/release-checkpoint.ts */
-
-import * as process from "process";
-import * as readline from "readline";
+import { isatty } from "node:tty";
+import {
+	env,
+	argv,
+	exit,
+	stdin as input,
+	stdout as output,
+} from "node:process";
+import { createInterface } from "node:readline/promises";
 import { colorize, colors } from "./utils/colors";
 
-// Check if we are in an interactive environment or if a "force" flag is present
-const isInteractive = process.stdout.isTTY;
-const isCI = process.env.CI === "true";
+async function runCheckpoint() {
+	const isCI = env.CI === "true";
+	// Check if stdout (file descriptor 1) is a terminal
+	const isInteractive = isatty(1);
 
-// If we are not interactive, we want to skip the prompt to prevent accidental automated releases
-if (!isInteractive || isCI) {
-  console.log(
-    colorize(
-      "⚠ Non-interactive environment detected. Skipping confirmation prompt.",
-      colors.fgYellow,
-    ),
-  );
-  // Option A: Proceed automatically (risky)
-  // process.exit(0);
+	if (!isInteractive || isCI) {
+		console.log(
+			colorize(
+				"⚠ Non-interactive or CI environment. Skipping.",
+				colors.fgYellow,
+			),
+		);
+		exit(isCI ? 0 : 1);
+	}
 
-  // Option B: Abort (safer, requires manual release)
-  console.log(
-    colorize("✗ Cannot release in non-interactive mode.", colors.fgRed),
-  );
-  process.exit(1);
+	const rl = createInterface({ input, output });
+	const promptMessage =
+		argv[2] || "Are you sure you want to release a new version?";
+
+	const formattedPrompt = `${colorize(promptMessage, colors.fgCyan)} ${colorize("(y/N) ", colors.fgYellow)}`;
+
+	try {
+		const answer = await rl.question(formattedPrompt);
+		const confirmed =
+			answer.toLowerCase() === "y" || answer.toLowerCase() === "yes";
+
+		if (confirmed) {
+			console.log(
+				colorize(
+					"✓ Proceeding with the release...",
+					colors.fgGreen + colors.bright,
+				),
+			);
+			exit(0);
+		} else {
+			console.log(
+				colorize("✗ Release aborted.", colors.fgMagenta + colors.bright),
+			);
+			exit(1);
+		}
+	} finally {
+		rl.close();
+	}
 }
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
-const customPrompt = process.argv[2];
-const defaultPrompt = "Are you sure you want to release a new version?";
-const promptMessage = customPrompt || defaultPrompt;
-
-const formattedPrompt =
-  colorize(promptMessage, colors.fgCyan) +
-  " " +
-  colorize("(y/N) ", colors.fgYellow);
-
-rl.question(formattedPrompt, (answer) => {
-  rl.close();
-  if (answer.toLowerCase() === "y" || answer.toLowerCase() === "yes") {
-    console.log(
-      colorize(
-        "✓ Proceeding with the release...",
-        colors.fgGreen + colors.bright,
-      ),
-    );
-    process.exit(0);
-  } else {
-    console.log(
-      colorize("✗ Release aborted.", colors.fgMagenta + colors.bright),
-    );
-    process.exit(1);
-  }
-});
+runCheckpoint();
