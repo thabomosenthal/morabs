@@ -1,3 +1,12 @@
+## 0.4.2](https://github.com/thabomosenthal/morabs/compare/v0.4.1...v0.4.2) (2026-01-29)
+
+
+### Bug Fixes
+
+* **ci:** resolve pnpm version mismatch in GitHub Actions ([e4e807e](https://github.com/thabomosenthal/morabs/commit/e4e807e688a1de913c1721050da839baf6fdd7be))
+
+
+
 ## 0.4.1](https://github.com/thabomosenthal/morabs/compare/v0.4.0...v0.4.1) (2026-01-28)
 
 
@@ -9,6 +18,10 @@
 
 <!-- markdownlint-disable MD024 -->
 # Changelog
+
+
+
+
 
 
 
